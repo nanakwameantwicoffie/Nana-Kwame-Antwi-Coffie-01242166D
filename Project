@@ -1,0 +1,95 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+/* ---------- Student Class ---------- */
+class Student {
+public:
+    string name;
+    string indexNumber;
+};
+
+/* ---------- Global Student List ---------- */
+vector<Student> students;
+
+/* ---------- Load Students ---------- */
+void loadStudents() {
+
+    ifstream file("students.txt");
+    Student s;
+
+    while (file >> s.name >> s.indexNumber) {
+        students.push_back(s);
+    }
+
+    file.close();
+}
+
+
+/* ---------- Menu Function ---------- */
+void menu() {
+
+    int choice;
+
+    do {
+
+        cout << "1 Register Student\n";
+        cout << "2 View Students\n";
+        cout << "3 Search Student\n";
+        cout << "4 Create Session\n";
+        cout << "5 Mark Attendance\n";
+        cout << "6 Attendance Report\n";
+        cout << "0 Exit\n";
+
+        cout << "Choice: ";
+        cin >> choice;
+
+        switch (choice) {
+
+        case 1:
+            cout << "Register Student Selected\n";
+            break;
+
+        case 2:
+            cout << "View Students Selected\n";
+            break;
+
+        case 3:
+            cout << "Search Student Selected\n";
+            break;
+
+        case 4:
+            cout << "Create Session Selected\n";
+            break;
+
+        case 5:
+            cout << "Mark Attendance Selected\n";
+            break;
+
+        case 6:
+            cout << "Attendance Report Selected\n";
+            break;
+
+        case 0:
+            cout << "Goodbye\n";
+            break;
+
+        default:
+            cout << "Invalid Choice\n";
+        }
+
+    } while (choice != 0);
+}
+
+
+/* ---------- Main Function ---------- */
+int main() {
+
+    loadStudents();
+    menu();
+
+    return 0;
+}
